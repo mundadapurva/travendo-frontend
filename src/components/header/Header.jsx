@@ -4,6 +4,8 @@ import SearchBar from './SearchBar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import HeaderButtons from './HeaderButtons.jsx';
+import {Link} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
@@ -11,11 +13,13 @@ import HeaderButtons from './HeaderButtons.jsx';
 const useStyle = makeStyles({
     header: {
         background: '#219f94',
-        height: 55
+        height: 55,
+        zIndex:1,
+        // position: 'fixed'
 
     },
     logo: {
-        width: 75
+        width: 95
 
     },
     container: {
@@ -23,7 +27,9 @@ const useStyle = makeStyles({
     },
     component: {
         marginLeft: '12%',
-        lineHeight: 0
+        lineHeight: 0,
+        textDecoration:'none',
+        color: '#fff'
     },
     subheading: {
         fontSize: 10,
@@ -43,7 +49,11 @@ const useStyle = makeStyles({
 
 const Header = () => {
     const classes = useStyle();
-    const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
+    // const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
+    const logoURL = 'img/Background.png';
+    // const logoURL = 'img/Travendo.png';
+    const user = useSelector(state => state.user);
+
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -58,15 +68,15 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box className={classes.component}>
+                    <Link to='/' className={classes.component}>
                         <img src={logoURL} className={classes.logo} alt="Logo" />
                         <Box className={classes.container}>
-                            <Typography className={classes.subheading}>Explore Plus</Typography>
+                            <Typography className={classes.subheading}>Traditional Vendors</Typography>
 
                         </Box>
-                    </Box>
+                    </Link>
                     <SearchBar />
-                    <Box className={classes.siddhi}>
+                    <Box className={classes.siddhi} user={user}>
                         <HeaderButtons />
                     </Box>
 

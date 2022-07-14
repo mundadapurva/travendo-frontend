@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core';
 const useStyle = makeStyles({
     image: {
         width: '100%',
-        height: 200
+        height: 300
 
     },
     carousel:{
